@@ -41,7 +41,7 @@ except Exception as e:
 
 @client.event
 async def on_message(message):
-
+    pass
 @client.event
 async def on_ready():
     print(f"client | Status:   Operational")
@@ -49,7 +49,7 @@ async def on_ready():
     print(f"client | Name:     {format(client.user.name)}")
     print(f"client | Guilds:   {len(client.guilds)}")
     #? Custom Activity
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Syntax = "))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Syntax = " + syntax))
 
 
 
