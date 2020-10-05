@@ -25,7 +25,7 @@ client = discord.Client()
 config = {
   'user': vars.USERNAME,
   'password': vars.PASSWORD,
-  'host': vars.IP,
+  'host': vars.HOSTNAME,
   'database': vars.DATABASE,
   'raise_on_warnings': True
 }
