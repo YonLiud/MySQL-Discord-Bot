@@ -54,6 +54,9 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content.startswith(syntax):
+        if message.author.id not in whitelisted:
+            await message.channel.send(embed=discord.Embed(title="You are not authorized to use this bot", description='Please contact the bot hoster to add you to the whitelisted members list', color=discord.Color.red()))
+            return
         if message.content==syntax+"help":
             await message.channel.send(embed=discord.Embed(title=client.user.name, description='https://devhints.io/mysql', color=discord.Color.purple()))
             return
@@ -76,11 +79,11 @@ async def on_message(message):
 
 @client.event
 async def on_ready():
-    print(f"bot | Status:   Operational")
-    print(f"bot | ID:       {format(client.user.id)}")
-    print(f"bot | Name:     {format(client.user.name)}")
-    print(f"bot | Guilds:   {len(client.guilds)}")
-    print(f"bot Configurations: {config}")
+    print(f"Bot | Status:   Operational")
+    print(f"Bot | ID:       {format(client.user.id)}")
+    print(f"Bot | Name:     {format(client.user.name)}")
+    print(f"Bot | Guilds:   {len(client.guilds)}")
+    print(f"Bot Configurations: {config}")
     print(f"Bot is ready to use")
     #? Custom Activity
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Syntax = " + syntax))
