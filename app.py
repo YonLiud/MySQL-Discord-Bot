@@ -46,7 +46,8 @@ def exec(query):
         return cursor.fetchall()
     except Exception as e:
         print(e)
-        return "ERR"
+        return str(e)
+        #return ['ERR', e]
 @client.event
 async def on_message(message):
     data = []
@@ -67,16 +68,16 @@ async def on_message(message):
             await message.channel.send(embed=discord.Embed(title=client.user.name, description='Arguments are missing for the query', color=discord.Color.red()))
             return
         output = exec(query)
-        if output == "ERR":
-            await message.channel.send(embed=discord.Embed(title="An error occurred", description='See console for more information', color=discord.Color.red()))
+        if isinstance(output, list):
+            for result in output:
+                sub_data = []
+                for x in result:
+                    sub_data.append(x)
+                data.append(sub_data)
+            await message.channel.send(columnar(data, no_borders=False))
             return
-        for result in output:
-            sub_data = []
-            for x in result:
-                sub_data.append(x)
-            data.append(sub_data)
-        await message.channel.send(columnar(data, no_borders=False))
-
+        else:
+            await message.channel.send(embed=discord.Embed(title="MySQL Returned an Error", description=output, color=discord.Color.red()))
 @client.event
 async def on_ready():
     print(f"Bot | Status:   Operational")
