@@ -1,56 +1,113 @@
-`Confuse Them With Your Silence and Shock Them With Your Results`
-# MySQL Database Bot
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="https://icons-for-free.com/iconfiles/png/512/development+logo+mysql+icon-1320184807686758112.png" alt="Bot logo"></a>
+</p>
 
+<h3 align="center">MySQL Discord Bot</h3>
 
+<div align="center">
 
-MySQL Database Bot is a discord bot, able to connect and manage any MySQL Database remotely.
-  - No Premium - Complete Self Hosting
-  - Access to any MySQL Database file
-  - Full MySQL shell access
-  - MySQL Cheat Sheet Included at 'help' command
-![](https://discordpy.readthedocs.io/en/latest/_images/snake.png)
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/YonLiud/MySQL-Discord-Bot/issues)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
+</div>
 
-# ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=+) Setup
-MySQL Database Bot uses a small number of python modules to work properly:
+---
 
-* [Valid Token](https://discordpy.readthedocs.io/en/latest/discord.html) - A Valid discord bot
-* [Python](https://www.python.org/) - Python, duh
-* [Discord.py](https://pypi.org/project/discord.py/) - Discord Module
+<p align="center"> 🤖 Remotely connect to any MySQL Database and execute any query!
+    <br> 
+</p>
 
-And of course MySQL Database Bot itself is open source with a [public repository](https://github.com/YonLiud/MySQL-Discord-Bot) 
-on GitHub.
+## 📝 Table of Contents
 
-# ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) Installation
+- [About](#about)
+- [How it works](#working)
+- [Usage](#usage)
+- [Getting Started](#getting_started)
+- [Deploying your own bot](#deployment)
+- [Built Using](#built_using)
+- [Authors](#authors)
 
-MySQL Discord Bot requires [Python3](https://www.python.org/) & [Discord.py](https://pypi.org/project/discord.py/) to run.
+## 🧐 About <a name = "about"></a>
 
-#### Install the modules.
+The bot 
 
-```sh
-$ cd MySQL-Discord-Bot
-$ pip install discord.py
+## 💭 How it works <a name = "working"></a>
+
+The Bot first connect to the database by reading the variables in ``vars.py`` and execute a connection query.
+
+After that the bot will be listening to commands starting with the query, on command syntax it will run a check, if the user executing the query is whitelisted in the ``vars.py`` file, if the person is authorized, the query will be executed
+
+If not, the query will not be executed and the bot will send an error message to the same channel of execution of command
+
+The entire bot is written in Python 3.8
+
+## 🎈 Usage <a name = "usage"></a>
+
+To use the bot, type:
+
 ```
-#### Insert bot's token
-How to get a token: [click here](https://discordpy.readthedocs.io/en/latest/discord.html)
-
-Inside ```vars.py``` insert the required parameters
-## ![#c5f015](https://via.placeholder.com/15/FFFF00/000000?text=+) Running Bot
-
-```sh
-$ python3 app.py
+<syntax you set> <query>
 ```
 
-#### ![#FF69B4](https://via.placeholder.com/15/FF69B4/000000?text=+) Help
+The first part, i.e. "<syntax>" **is** case sensitive.
 
-For support, just open an issue ticket, and I will help you out!
+### Example:
+```
+mysql> SELECT * FROM `users` WHERE id=`2`
+```
 
-License
-----
+---
 
-MIT
+## 🏁 Getting Started <a name = "getting_started"></a>
+
+first clone the repository into your local machine!
+```sh
+git clone https://github.com/YonLiud/MySQL-Discord-Bot/
+```
+after cloning, you need a token for your discord bot, please follow [this guide](https://www.writebots.com/discord-bot-token/) how to get one
 
 
 
+### Prerequisites
 
-Social media doesn’t always need to know about your grinding and hustle. People WILL KNOW about it when they see your RESULTS. It’s the one thing you can’t fake.
+You will need to install some modules before being able to use the bot!
+
+discord.py
+```sh
+pip3 install discord.py
+```
+
+columnar
+```sh
+pip3 install columnar
+```
+
+mysql
+```sh 
+pip3 install mysql
+```
+
+### Installing
+
+Now we need to configure the bot!
+
+Now open ``vars.py`` file located in the root directory of the clone
+
+Insert into the required fields the required information
+
+## 🚀 Deploying your own bot <a name = "deployment"></a>
+
+To run the bot, simply execute a python3 command!
+```sh
+python3 app.py
+```
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [Visual Studio Code](https://github.com/microsoft/vscode) - free source-code editor made by Microsoft for Windows, Linux and macOS
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@YonLiud](https://github.com/YonLiud) - Idea & Initial work
