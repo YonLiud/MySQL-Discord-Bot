@@ -23,8 +23,10 @@ try:
     cursor = cnx.cursor()
     print("MySQL Connection Created Successfully")
 except Exception as e:
+    print("Error at:")
     print(e)
-    print("Exitting...")
+    print()
+    print("Exiting...")
     exit()
 
 def exec(query):
