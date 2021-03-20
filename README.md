@@ -85,7 +85,7 @@ pip3 install columnar
 
 mysql
 ```sh 
-pip3 install mysql
+pip3 install mysql-connector-python-rf
 ```
 
 ### Installing
