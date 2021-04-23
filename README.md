@@ -73,21 +73,9 @@ after cloning, you need a token for your discord bot, please follow [this guide]
 
 You will need to install some modules before being able to use the bot!
 
-discord.py
-```sh
-pip3 install discord.py
+```shell
+pip3 install -r requirements.txt
 ```
-
-columnar
-```sh
-pip3 install columnar
-```
-
-mysql
-```sh 
-pip3 install mysql-connector-python-rf
-```
-
 ### Installing
 
 Now we need to configure the bot!
