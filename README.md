@@ -1,100 +1,104 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://icons-for-free.com/iconfiles/png/512/development+logo+mysql+icon-1320184807686758112.png" alt="Bot logo"></a>
-</p>
-
 <h3 align="center">MySQL Discord Bot</h3>
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 ---
 
-<p align="center"> 🤖 Remotely connect to any MySQL Database and execute any query!
+<p align="center">Remotely connect to any MySQL Database via Discord and execute any query!
     <br> 
 </p>
 
-## 📝 Table of Contents
+## About
 
-- [About](#about)
-- [How it works](#working)
-- [Usage](#usage)
-- [Getting Started](#getting_started)
-- [Deploying your own bot](#deployment)
-- [Built Using](#built_using)
-- [Authors](#authors)
+The MySQL Discord Bot is a powerful tool that allows you to remotely connect to any MySQL database and execute queries directly from a Discord server. This bot is designed to facilitate database management and querying without needing direct access to the database server, making it ideal for developers, database administrators, and technical teams who collaborate on Discord.
 
-## 🧐 About <a name = "about"></a>
+## How it works
 
-The bot 
+The MySQL Discord Bot operates by connecting to a MySQL database and executing queries based on user commands within a Discord server. Here’s a step-by-step breakdown of how it functions:
 
-## 💭 How it works <a name = "working"></a>
+1. **Database Connection**: The bot reads the database connection variables from the vars.py file, which includes the database credentials and connection details.
 
-The Bot first connect to the database by reading the variables in ``vars.py`` and execute a connection query.
+2. **Command Listening**: The bot continuously listens for specific command syntax in the Discord server. Commands must follow the predefined syntax set in the configuration.
 
-After that the bot will be listening to commands starting with the query, on command syntax it will run a check, if the user executing the query is whitelisted in the ``vars.py`` file, if the person is authorized, the query will be executed
+3. **User Authentication**: Upon receiving a command, the bot checks if the user is whitelisted in the vars.py file. Only authorized users are allowed to execute queries.
 
-If not, the query will not be executed and the bot will send an error message to the same channel of execution of command
+4. **Query Execution**: If the user is authorized, the bot executes the query on the connected MySQL database.
 
-The entire bot is written in Python 3.8
+5. **Response Handling**: The bot sends the query results back to the same Discord channel where the command was issued. If the user is not authorized, the bot sends an error message instead.
 
-## 🎈 Usage <a name = "usage"></a>
+## Usage
 
-To use the bot, type:
+To use the MySQL Discord Bot, follow these steps:
 
+Command Syntax: All commands must start with the predefined syntax specified in the configuration (e.g., mysql>). This syntax is case-sensitive.
+Query Execution: Type your SQL query after the syntax to execute it.
+Example:
+```shell
+mysql> SELECT * FROM `users` WHERE id=2
 ```
-<syntax you set> <query>
-```
+Detailed Steps:
+* Whitelisted Users Only: The bot checks if the user issuing the command is whitelisted. If not, an error message will be sent.
+* Help Command: Type mysql> help to get a link to MySQL documentation.
+* Query Execution: The bot will process the query and return the results. If the query returns an empty list, a message indicating this will be sent. If there is an error in the query, * 
 
-The first part, i.e. "<syntax>" **is** case sensitive.
+the error message will be displayed.
 
-### Example:
-```
-mysql> SELECT * FROM `users` WHERE id=`2`
-```
+Responses:
+* Successful Query: The bot returns the query results in a tabular format.
+* Empty Result: A message indicating that the query returned an empty list.
+* Unauthorized User: An error message if the user is not whitelisted.
+* Query Error: An error message if there is an issue with the query.
+
+This setup ensures secure and efficient query execution directly from your Discord server.
 
 ---
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+## Getting Started
 
-first clone the repository into your local machine!
+To set up and run the MySQL Discord Bot, follow these steps:
+
+1. Clone the Repository
+Clone the repository to your local machine using the following command:
+
 ```sh
 git clone https://github.com/YonLiud/MySQL-Discord-Bot/
 ```
-after cloning, you need a token for your discord bot, please follow [this guide](https://www.writebots.com/discord-bot-token/) how to get one
 
+2. Obtain a Discord Bot Token
+After cloning the repository, you'll need to obtain a token for your Discord bot. Follow this guide to get your bot token.
 
-
-### Prerequisites
-
-You will need to install some modules before being able to use the bot!
+3. Install Prerequisites
+Before using the bot, install the required Python modules. Navigate to the root directory of the cloned repository and run:
 
 ```shell
 pip3 install -r requirements.txt
 ```
-### Installing
 
-Now we need to configure the bot!
+4. Configure the Bot
+Open the vars.py file located in the root directory of the cloned repository.
+Fill in the required information in the vars.py file:
+```python
+USERNAME = 'your_database_username'
+PASSWORD = 'your_database_password'
+HOSTNAME = 'your_database_host'
+DATABASE = 'your_database_name'
+WHITELIST_IDS = [list_of_whitelisted_user_ids]
+SYNTAX = 'your_command_syntax'
+TOKEN = 'your_discord_bot_token'
+```
 
-Now open ``vars.py`` file located in the root directory of the clone
+Replace placeholders (your_database_username, your_database_password, etc.) with your actual database credentials, Discord bot token, and command syntax.
 
-Insert into the required fields the required information
+5. Deploying Your Own Bot
+To run the bot, execute the following command in your terminal within the root directory of the cloned repository:
 
-## 🚀 Deploying your own bot <a name = "deployment"></a>
-
-To run the bot, simply execute a python3 command!
 ```sh
 python3 app.py
 ```
 
-## ⛏️ Built Using <a name = "built_using"></a>
 
-- [Visual Studio Code](https://github.com/microsoft/vscode) - free source-code editor made by Microsoft for Windows, Linux and macOS
-
-## ✍️ Authors <a name = "authors"></a>
-
-- [@YonLiud](https://github.com/YonLiud) - Idea & Initial work
+This command starts the MySQL Discord Bot and connects it to your configured Discord server and MySQL database.
